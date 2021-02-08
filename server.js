@@ -35,7 +35,7 @@ const io = socket( server, {
 io.on( 'connection', ( client ) => {
     console.log( 'SOCKET: ', 'A client connected', client.id );
 
-    client.on( 'brew', () => {
-        console.log( "Starting brew" );
+    client.on( 'brew', ( data ) => {
+        console.log( data );
     })
 });

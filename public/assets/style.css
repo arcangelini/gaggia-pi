@@ -3,3 +3,17 @@ html, body {
   font-family: 'Roboto Condensed', sans-serif;
   color: #333333;
 }
+
+body {
+  text-align: center;
+}
+
+div#brew {
+  width: 100px;
+  text-align: center;
+  margin: auto;
+  background-color: blanchedalmond;
+  padding: 10px;
+  border: 2px #000 solid;
+  border-radius: 5px;
+}
