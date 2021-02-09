@@ -8,7 +8,7 @@ body {
   text-align: center;
 }
 
-div#brew {
+#brew {
   width: 100px;
   text-align: center;
   margin: auto;
