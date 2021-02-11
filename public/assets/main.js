@@ -4,7 +4,6 @@
 
 let button_brew = document.getElementById( 'brew' )
 let isConnectionActive = false
-let brewTime = document.getElementById( 'amount' )
 let connection = io( 'http://gaggia.local:9000' )
 
 connection.on( 'connect', () => {
@@ -16,5 +15,6 @@ connection.on( 'disconnect', () => {
 });
 
 button_brew.addEventListener( 'click', () => {
-    connection.emit( 'brew', 'Brew time: ' + brewTime );
+    let brewTime = document.getElementById( 'amount' ).value;
+    connection.emit( 'start_brew', 'Brew time: ' + brewTime );
 })

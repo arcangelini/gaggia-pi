@@ -17,3 +17,9 @@ body {
   border: 2px #000 solid;
   border-radius: 5px;
 }
+
+input#amount {
+  font-size: 24px;
+  display: block;
+  margin: 5px auto;
+}

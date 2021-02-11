@@ -37,7 +37,7 @@ io.on( 'connection', ( client ) => {
 
     client.emit("Connected to server");
     
-    client.on( 'brew', ( data ) => {
+    client.on( 'brew_start', ( data ) => {
         console.log( data );
     })
 
