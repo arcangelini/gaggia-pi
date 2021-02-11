@@ -8,6 +8,7 @@
 
 const express = require( 'express' )
 const socket = require( 'socket.io' )
+const spawn = require('child_process').spawn;
 const app = express()
 const port  = 9000
 
@@ -37,8 +38,17 @@ io.on( 'connection', ( client ) => {
 
     client.emit("Connected to server");
     
-    client.on( 'brew_start', ( data ) => {
-        console.log( data );
+    client.on( 'brew_start', ( setWeight ) => {
+        
+        const scale = spawn('python', ['./hx711py/scale.py'], {
+			detached: true,
+		});
+        const weight = scale.stdout
+
+        do 
+            console.log( weight );
+        while (weight < setWeight);
+    
     })
 
 });
