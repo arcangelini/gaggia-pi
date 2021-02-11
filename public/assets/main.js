@@ -2,9 +2,10 @@
  * Client response
  */
 
-let button_brew = document.getElementById( 'brew' );
-let isConnectionActive = false;
-let connection = io( 'http://gaggia.local:9000' );
+let button_brew = document.getElementById( 'brew' )
+let isConnectionActive = false
+let brewTime = document.getElementById( 'amount' )
+let connection = io( 'http://gaggia.local:9000' )
 
 connection.on( 'connect', () => {
     isConnectionActive = true;
@@ -15,5 +16,5 @@ connection.on( 'disconnect', () => {
 });
 
 button_brew.addEventListener( 'click', () => {
-    connection.emit( 'brew', 'Brew initiated');
+    connection.emit( 'brew', 'Brew time: ' + brewTime );
 })
