@@ -16,5 +16,5 @@ connection.on( 'disconnect', () => {
 
 button_brew.addEventListener( 'click', () => {
     let brewTime = document.getElementById( 'amount' ).value;
-    connection.emit( 'start_brew', 'Brew time: ' + brewTime );
+    connection.emit( 'brew_start', brewTime );
 })
