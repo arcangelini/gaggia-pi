@@ -35,15 +35,17 @@ const io = socket( server, {
 
 io.on( 'connection', ( client ) => {
     console.log( 'SOCKET: ', 'A client connected', client.id );
-
-    client.emit("Connected to server");
     
     client.on( 'brew_start', ( setWeight ) => {
         
-        const scale = spawnSync('python', ['/home/pi/gaggia/helper/hx711py/scale.py'], {
-			stdio: 'inherit',
+        const scale = spawnSync( 'python', [ '/home/pi/gaggia/helper/hx711py/scale.py ' + setWeight ], {
+			stdio: [ 'ignore', 'pipe', 'ignore' ],
             timeout: 10000,
 		});
+
+        scale.stdout.on( 'data', ( data ) => {
+            console.log( data.toString() )
+        })
 
     })
 
