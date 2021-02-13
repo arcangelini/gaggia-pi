@@ -22,21 +22,25 @@ def cleanAndExit():
     print("Bye!")
     sys.exit()
 
-hx = HX711(5, 6)
+hx = HX711(6,5)
 hx.set_reading_format("MSB", "MSB")
 
 hx.set_reference_unit(6943)
 hx.reset()
 hx.tare()
 
-print("Scale starting")
+val = 0
+targetWeight = int( sys.argv[1] )
 
-while True:
+print( "Filling to: " + str( targetWeight ) )
+
+while val < targetWeight:
     try:
-        val = hx.get_weight(5)
-        print( '{:.1f}'.format(val + 0) )
+        val =  hx.get_weight(5)
+        print(val)
 
         hx.reset()
 
     except (KeyboardInterrupt, SystemExit):
         cleanAndExit()
+
