@@ -8,7 +8,7 @@
 
 const express = require( 'express' )
 const socket = require( 'socket.io' )
-const spawn = require('child_process').spawn;
+const { spawn } = require('child_process').spawn;
 const app = express()
 const port  = 9000
 
@@ -40,8 +40,12 @@ io.on( 'connection', ( client ) => {
     
     client.on( 'brew_start', ( setWeight ) => {
         
+        const brewData = ( data ) => {
+            client.emit( 'brewing', data.toString() )
+        }
+
         const scale = spawn( 'python', [ '/home/pi/gaggia/helper/hx711py/scale.py', setWeight ], {
-		    stdio: 'inherit',
+		    stdio: [ 'ignore', brewData, 'ignore'],
             timeout: 10000,
 	    });
 
