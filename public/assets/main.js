@@ -18,3 +18,7 @@ button_brew.addEventListener( 'click', () => {
     let brewTime = document.getElementById( 'amount' ).value;
     connection.emit( 'brew_start', brewTime );
 })
+
+connection.on( 'brewing', ( data ) => {
+    console.log( data )
+})
