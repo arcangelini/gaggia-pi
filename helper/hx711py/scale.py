@@ -10,11 +10,13 @@ referenceUnit = 1
 if not EMULATE_HX711:
     import RPi.GPIO as GPIO
     from hx711 import HX711
+    GPIO.setwarnings( False )
+
 else:
     from emulated_hx711 import HX711
 
 def cleanAndExit():
-    print("Cleaning...")
+    print( "Cleaning..." )
 
     if not EMULATE_HX711:
         GPIO.cleanup()
@@ -22,22 +24,22 @@ def cleanAndExit():
     print("Bye!")
     sys.exit()
 
-hx = HX711(6,5)
-hx.set_reading_format("MSB", "MSB")
+hx = HX711( 6, 5 )
+hx.set_reading_format( "MSB", "MSB" )
 
-hx.set_reference_unit(6943)
+hx.set_reference_unit( 6943 )
 hx.reset()
 hx.tare()
 
-val = 0
-targetWeight = int( sys.argv[1] )
+current_weight = 0
+target_weight = int( sys.argv[1] )
 
-print( "Filling to: " + str( targetWeight ) )
+print( "Filling to: " + str( target_weight ) )
 
-while val < targetWeight:
+while current_weight < target_weight:
     try:
-        val =  hx.get_weight(5)
-        print(val)
+        current_weight =  hx.get_weight( 5 )
+        print( current_weight )
 
         hx.reset()
 
