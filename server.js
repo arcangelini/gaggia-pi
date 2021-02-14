@@ -8,7 +8,7 @@
 
 const express = require( 'express' )
 const socket = require( 'socket.io' )
-const { spawn } = require('child_process').spawn;
+const spawn = require('child_process').spawn;
 const app = express()
 const port  = 9000
 
