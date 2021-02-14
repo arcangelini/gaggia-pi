@@ -40,19 +40,10 @@ io.on( 'connection', ( client ) => {
     
     client.on( 'brew_start', ( setWeight ) => {
         
-<<<<<<< HEAD
-        console.log( scale )
-        
-        const scale = spawnSync( 'python', [ '/home/pi/gaggia/helper/hx711py/scale.py ' + setWeight ], {
-			stdio: [ 'inherit' ],
-            timeout: 10000,
-		}, );
-=======
         const scale = spawnSync('python', ['/home/pi/gaggia/helper/hx711py/scale.py'], {
 			stdio: 'inherit',
             timeout: 10000,
 		});
->>>>>>> parent of caea1eb (HX711 second try)
 
     })
 
