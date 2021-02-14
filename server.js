@@ -39,16 +39,11 @@ io.on( 'connection', ( client ) => {
     client.emit( "Connected to server" );
     
     client.on( 'brew_start', ( setWeight ) => {
-        let brewData = ( data ) => {
-            console.log ( data )
-        }
+
         const scale = spawn( 'python', [ '/home/pi/gaggia/helper/hx711py/scale.py', setWeight ], {
             timeout: 10000,
-            detached: true,
 	    });
-
-        scale.stdout.pipe( brewData() )
-
     })
+
 
 });
