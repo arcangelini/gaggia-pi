@@ -40,7 +40,7 @@ io.on( 'connection', ( client ) => {
     
     client.on( 'brew_start', ( setWeight ) => {
         
-        const scale = spawnSync('python', ['/home/pi/gaggia/helper/hx711py/scale.py'], {
+        const scale = spawnSync('python', ['/home/pi/gaggia/helper/hx711py/scale.py', setWeight ], {
 			stdio: 'inherit',
             timeout: 10000,
 		});
