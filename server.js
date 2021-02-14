@@ -35,15 +35,24 @@ const io = socket( server, {
 
 io.on( 'connection', ( client ) => {
     console.log( 'SOCKET: ', 'A client connected', client.id );
+
+    client.emit("Connected to server");
     
     client.on( 'brew_start', ( setWeight ) => {
         
+<<<<<<< HEAD
         console.log( scale )
         
         const scale = spawnSync( 'python', [ '/home/pi/gaggia/helper/hx711py/scale.py ' + setWeight ], {
 			stdio: [ 'inherit' ],
             timeout: 10000,
 		}, );
+=======
+        const scale = spawnSync('python', ['/home/pi/gaggia/helper/hx711py/scale.py'], {
+			stdio: 'inherit',
+            timeout: 10000,
+		});
+>>>>>>> parent of caea1eb (HX711 second try)
 
     })
 
