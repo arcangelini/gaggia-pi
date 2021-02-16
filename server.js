@@ -45,8 +45,8 @@ io.on( 'connection', ( client ) => {
         scale.stdout.on( 'data', data => {
             client.emit( 'brewing', data )
         } )
-        
-        scale.sterr.setEncoding( 'utf-8' )
+
+        scale.stderr.setEncoding( 'utf-8' )
         scale.stderr.on( 'data', data => {
             client.emit( 'brewing', data )
         } )
