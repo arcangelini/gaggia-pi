@@ -38,8 +38,12 @@ print( "Filling to: " + str( target_weight ) )
 
 while current_weight < target_weight:
     try:
-        current_weight =  hx.get_weight( 5 )
-        print( '{0:.2f}'.format( current_weight + 0 ) )
+        current_weight = hx.get_weight( 5 )
+
+        if current_weight < 0
+            current_weight = 0
+
+        print( round( current_weight, 2 ) )
 
         hx.reset()
 
