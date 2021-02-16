@@ -2,12 +2,8 @@
 
 import time
 import sys
-import socketio
 
 EMULATE_HX711=False
-client = socketio.Client()
-client.connect( 'http://gaggia.local:9000' )
-client.emit( 'test', "Connected" )
 
 referenceUnit = 1
 
@@ -50,4 +46,3 @@ while current_weight < target_weight:
     except (KeyboardInterrupt, SystemExit):
         cleanAndExit()
 
-client.disconnect()

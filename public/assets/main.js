@@ -19,6 +19,6 @@ button_brew.addEventListener( 'click', () => {
     connection.emit( 'brew_start', brewTime );
 })
 
-connection.on( 'test', ( data ) => {
+connection.on( 'brewing', ( data ) => {
     console.log( data )
 })
