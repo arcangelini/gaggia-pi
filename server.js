@@ -38,14 +38,15 @@ io.on( 'connection', ( client ) => {
     
     client.on( 'brew_start', ( setWeight ) => {
         const scale = spawn( 'python3', [ '/home/pi/gaggia/helper/hx711py/scale.py', setWeight ], {
-            encoding: 'utf-8',
             detached: true,
         } );
 
+        scale.stdout.setEncoding( 'utf-8' )        
         scale.stdout.on( 'data', data => {
             client.emit( 'brewing', data )
         } )
-
+        
+        scale.sterr.setEncoding( 'utf-8' )
         scale.stderr.on( 'data', data => {
             client.emit( 'brewing', data )
         } )
