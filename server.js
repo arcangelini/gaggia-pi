@@ -38,11 +38,18 @@ io.on( 'connection', ( client ) => {
     
     client.on( 'brew_start', ( setWeight ) => {
         const scale = spawn( 'python3', [ '/home/pi/gaggia/helper/hx711py/scale.py', setWeight ], {
-            encoding: 'utf8',
+            encoding: 'utf-8',
             timeout: 10000,
         });
 
-        scale.stdout.pipe( client )
+        scale.stdout.on( 'data', data => {
+            socket.emit( 'brewing', data )
+        } )
+
+        scale.stderr.on( 'data', data => {
+            socket.emit( 'brewing', data )
+        } )
+        
     })
 
 
