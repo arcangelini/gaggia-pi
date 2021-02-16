@@ -37,7 +37,7 @@ io.on( 'connection', ( client ) => {
     console.log( 'SOCKET: ', 'A client connected', client.id );
     
     client.on( 'brew_start', ( setWeight ) => {
-        const scale = spawn( 'node', [ '/home/pi/gaggia/helper/scale.js', setWeight ], {
+        const scale = spawn( 'python3', [ '/home/pi/gaggia/helper/hx711py/scale.py', setWeight ], {
             encoding: 'utf8',
             detached: true,
         });
