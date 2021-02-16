@@ -42,8 +42,10 @@ io.on( 'connection', ( client ) => {
             timeout: 10000,
         });
 
+        let reading = ''
         scale.stdout.on( 'data', data => {
-            socket.emit( 'brewing', data )
+            reading += data
+            socket.emit( 'brewing', reading )
         } )
 
         scale.stderr.on( 'data', data => {
