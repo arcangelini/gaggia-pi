@@ -35,6 +35,7 @@ current_weight = 0
 target_weight = int( sys.argv[1] )
 
 print( "Filling to: " + str( target_weight ) )
+tic = time.perf_counter()
 
 while current_weight < target_weight:
     try:
@@ -43,7 +44,8 @@ while current_weight < target_weight:
         if current_weight < 0.009:
             current_weight = 0.000
 
-        print( '{0:.2f}'.format( current_weight ) )
+        toc = time.perf_counter()
+        print( '{0:.2f}'.format( current_weight ), " : ", '{0:.2f}'.format( toc - tic )  )
 
         hx.reset()
 

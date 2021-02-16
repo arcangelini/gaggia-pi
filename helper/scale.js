@@ -1,14 +1,26 @@
 /**
- * Process scale data
+ * Scale object
  */
-const spawn = require('child_process').spawnSync;
-const setWeight = process.argv[2]
+const { spawn } = require('child_process');
 
-console.log( "Brew starting" )
+class Scale {
+    _constructor(client, targetWeight) {
+        this.client = client;
+        this.read = spawn( 'python3', [ '/home/pi/gaggia/helper/hx711py/scale.py', targetWeight ], {
+            detached: true,
+            } 
+        );
+    }
 
-const scale = spawn( 'python', [ '/home/pi/gaggia/helper/hx711py/scale.py', setWeight ], {
-    timeout: 15000,
-    stdio: 'inherit'
-});
-
-console.log( "Brew finished" )
+    brew() {        
+        this.read.stdout.setEncoding( 'utf-8' )
+        this.read.stdout.on( 'data', data => {
+            this.client.emit( 'brewing', data )
+        } )
+        
+        this.read.stderr.setEncoding( 'utf-8' )
+        this.read.stderr.on( 'data', data => {
+            this.client.emit( 'brewing', data )
+        } )
+    }
+ }
