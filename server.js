@@ -38,12 +38,15 @@ io.on( 'connection', ( client ) => {
     
     client.on( 'brew_start', ( setWeight ) => {
 <<<<<<< HEAD
+<<<<<<< HEAD
         const scale = spawn( 'python', [ '/home/pi/gaggia/helper/hx711py/scale.py', setWeight ], {
             detached: true,
         });
 
         scale.unref();
 =======
+=======
+>>>>>>> parent of 628e9de (Tweak)
         const scale = spawn( 'python3', [ '/home/pi/gaggia/helper/hx711py/scale.py', setWeight ], {
             encoding: 'utf-8',
             timeout: 10000,
@@ -56,6 +59,9 @@ io.on( 'connection', ( client ) => {
         scale.stderr.on( 'data', data => {
             socket.emit( 'brewing', data )
         } )
+<<<<<<< HEAD
+>>>>>>> parent of 628e9de (Tweak)
+=======
 >>>>>>> parent of 628e9de (Tweak)
         
     })
