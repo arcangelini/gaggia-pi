@@ -39,9 +39,10 @@ print( "Filling to: " + str( target_weight ) )
 while current_weight < target_weight:
     try:
         current_weight =  hx.get_weight( 5 )
-        print( current_weight )
+        print( '{0:.2f}'.format( current_weight + 0 ) )
 
         hx.reset()
+
         sys.stdout.flush()
 
     except (KeyboardInterrupt, SystemExit):
