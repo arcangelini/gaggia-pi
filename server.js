@@ -8,7 +8,7 @@
 
 const express = require( 'express' )
 const socket = require( 'socket.io' )
-const spawn = require('child_process').spawn;
+const { spawn } = require('child_process');
 const app = express()
 const port  = 9000
 
@@ -38,10 +38,11 @@ io.on( 'connection', ( client ) => {
     
     client.on( 'brew_start', ( setWeight ) => {
         const scale = spawn( 'node', [ '/home/pi/gaggia/helper/scale.js', setWeight ], {
-            stdio: 'ipc',
+            encoding: 'utf8',
+            detached: true,
         });
 
-        scale.on( 'message', data => {
+        scale.stdout.on( 'data', ( data ) => {
             console.log( data )
         })
     })
