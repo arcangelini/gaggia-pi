@@ -42,16 +42,7 @@ io.on( 'connection', ( client ) => {
         });
 
         scale.unref();
-
-        scale.stdout.setEncoding('utf-8');
-
-        scale.stdout.on( 'data', data => {
-            client.emit( 'brewing', data )
-        } );
-
-        scale.stderr.on( 'data', data => {
-            client.emit( 'brewing', data )
-        } );
+        
     })
 
 
