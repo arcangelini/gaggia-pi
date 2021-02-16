@@ -40,10 +40,10 @@ while current_weight < target_weight:
     try:
         current_weight = hx.get_weight( 5 )
 
-        if current_weight < 0.00:
-            current_weight = 0.00
+        if current_weight < 0.009:
+            current_weight = 0.000
 
-        print( round( current_weight, 2 ) )
+        print( round( current_weight, 3 ) )
 
         hx.reset()
 
