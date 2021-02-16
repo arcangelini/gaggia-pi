@@ -42,6 +42,7 @@ while current_weight < target_weight:
         print( current_weight )
 
         hx.reset()
+        sys.stdout.flush()
 
     except (KeyboardInterrupt, SystemExit):
         cleanAndExit()
