@@ -43,7 +43,7 @@ while current_weight < target_weight:
         if current_weight < 0.009:
             current_weight = 0.000
 
-        print( round( current_weight, 3 ) )
+        print( '{0:.2f}'.format( current_weight ) )
 
         hx.reset()
 
