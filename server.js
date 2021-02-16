@@ -45,11 +45,11 @@ io.on( 'connection', ( client ) => {
         let reading = ''
         scale.stdout.on( 'data', data => {
             reading += data
-            socket.emit( 'brewing', reading )
+            client.emit( 'brewing', reading )
         } )
 
         scale.stderr.on( 'data', data => {
-            socket.emit( 'brewing', data )
+            client.emit( 'brewing', data )
         } )
         
     })
