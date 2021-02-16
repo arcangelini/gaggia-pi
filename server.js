@@ -8,7 +8,7 @@
 
 const express = require( 'express' )
 const socket = require( 'socket.io' )
-const Scale = require( '/home/pi/gaggia/helper/scale.js')
+const { Scale } = require( '/home/pi/gaggia/helper/scale.js')
 const app = express()
 const port  = 9000
 
