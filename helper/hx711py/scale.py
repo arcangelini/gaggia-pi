@@ -45,7 +45,7 @@ while current_weight < target_weight:
             current_weight = 0.000
 
         toc = time.perf_counter()
-        print( '{0:.2f}'.format( current_weight ), " : ", '{0:.2f}'.format( toc - tic )  )
+        print( '[', '{0:.2f}'.format( toc - tic ), ',', '{0:.2f}'.format( current_weight ), ']'  )
 
         hx.reset()
 

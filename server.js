@@ -8,9 +8,13 @@
 
 const express = require( 'express' )
 const socket = require( 'socket.io' )
-const Scale = require( '/home/pi/gaggia/helper/scale.js')
+const Scale = require( '/home/pi/gaggia/helper/gaggia.js' )
 const app = express()
-const port  = 9000
+const five = require( 'johnny-five' )
+const Raspi = require( 'raspi-io' ).RaspiIO;
+const board = new five.Board({
+    io: new Raspi()
+});
 
 app.get( '/', ( request, response ) => {
     response.sendFile( '/home/pi/gaggia/public/index.html' ), {
@@ -24,7 +28,7 @@ app.use( '/assets', express.static( '/home/pi/gaggia/public/assets' ) );
 app.use( '/assets', express.static( '/home/pi/gaggia/node_modules/socket.io-client/dist' ) );
 
 
-const server = app.listen( port, () => {
+const server = app.listen( 9000, () => {
     console.log( 'Express server started!' );
 });
 const io = socket( server, {
@@ -33,14 +37,14 @@ const io = socket( server, {
     }
 })
 
-io.on( 'connection', ( client ) => {
-    console.log( 'SOCKET: ', 'A client connected', client.id );
-    
-    client.on( 'brew_start', ( setWeight ) => {
-        const scale = new Scale( client, setWeight )
+board.on( 'ready', () => {
+    io.on( 'connection', ( client ) => {
+        console.log( 'SOCKET: ', 'A client connected', client.id );
 
-        scale.brew()
-    })
+        client.on( 'brew_start', ( setWeight ) => {
+            const scale = new Scale( client, setWeight )
 
-
+            scale.brew()
+        })
+    });
 });
