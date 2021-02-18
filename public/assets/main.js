@@ -20,8 +20,15 @@ button_brew.addEventListener( 'click', () => {
 })
 
 connection.on( 'brewing', ( data ) => {
+
+    if ( data.startsWith("Filling") ) {
+        console.log( data );
+    } else {
+        continue;
+    }
+    let arr = [ data ]
     let brew = []
-    brew.push( data )
+    brew.push( arr )
     
     const options = {
         chart: {
@@ -39,5 +46,5 @@ connection.on( 'brewing', ( data ) => {
     
     chart.render();
 
-    console.log( data )
+    console.log( brew )
 })

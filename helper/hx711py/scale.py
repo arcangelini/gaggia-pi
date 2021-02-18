@@ -39,13 +39,13 @@ tic = time.perf_counter()
 
 while current_weight < target_weight:
     try:
-        current_weight = hx.get_weight( 5 )
+        current_weight = hx.get_weight( 3 )
 
         if current_weight < 0.009:
             current_weight = 0.000
 
         toc = time.perf_counter()
-        print( '[', '{0:.2f}'.format( toc - tic ), ',', '{0:.2f}'.format( current_weight ), ']'  )
+        print( '{0:.2f}'.format( toc - tic ), ',', '{0:.2f}'.format( current_weight ) )
 
         hx.reset()
 
