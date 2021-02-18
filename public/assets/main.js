@@ -48,11 +48,15 @@ connection.on( 'brewing', ( brewData ) => {
     if ( brewData.startsWith( "Filling" ) ) {
         console.log( brewData );
     } else {
-        update = []
-        update.push( { brewData } )
+        data = brewData.slice(",")
+        weight = data[1]
+        time = data[0]
 
         chart.updateSeries([{
-            data: update
+            data: [{
+                x: weight,
+                y: time
+            }]
         }])
     }
 
