@@ -5,8 +5,28 @@
 let button_brew = document.getElementById( 'brew' )
 let isConnectionActive = false
 let connection = io( 'http://gaggia.local:9000' )
+let chart = new ApexCharts( document.querySelector( '#chart' ), options );
+const options = {
+    chart: {
+        type: 'line'
+    },
+    series: [{
+        name: 'Brew',
+        data: []
+    }],
+    xaxis: {
+        type: 'numeric'
+    },
+    animations: {
+        enabled: true,
+        easing: 'linear',
+        dynamicAnimation: {
+          speed: 1000
+        }
+    }
+}
 
-connection.on( 'connect', ( server ) => {
+connection.on( 'connect', () => {
     isConnectionActive = true;
 });
 
@@ -17,34 +37,19 @@ connection.on( 'disconnect', () => {
 button_brew.addEventListener( 'click', () => {
     let brewTime = document.getElementById( 'amount' ).value;
     connection.emit( 'brew_start', brewTime );
+
+    chart.render();
 })
 
 connection.on( 'brewing', ( data ) => {
 
-    if ( data.startsWith("Filling") ) {
+    if ( data.startsWith( "Filling" ) ) {
         console.log( data );
     } else {
-        continue;
-    }
-    let arr = [ data ]
-    let brew = []
-    brew.push( arr )
-    
-    const options = {
-        chart: {
-            type: 'line'
-        },
-        series: [{
-            name: 'Brew',
+        chart.updateSeries([{
             data: brew
-        }],
-        xaxis: {
-            type: 'numeric'
-        }
+        }])
     }
-    let chart = new ApexCharts( document.querySelector( '#chart' ), options );
-    
-    chart.render();
 
     console.log( brew )
 })
