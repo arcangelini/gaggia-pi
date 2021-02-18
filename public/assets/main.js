@@ -14,9 +14,6 @@ const options = {
         name: 'Brew',
         data: []
     }],
-    xaxis: {
-        type: 'numeric'
-    },
     animations: {
         enabled: true,
         easing: 'linear',
