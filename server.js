@@ -42,6 +42,7 @@ board.on( 'ready', () => {
         console.log( 'SOCKET: ', 'A client connected', client.id );
 
         client.on( 'brew_start', ( setWeight ) => {
+	    console.log( "Brew initiated" )
             const scale = new Scale( client, setWeight )
 
             scale.brew()
