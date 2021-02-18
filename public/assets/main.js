@@ -48,8 +48,11 @@ connection.on( 'brewing', ( brewData ) => {
     if ( brewData.startsWith( "Filling" ) ) {
         console.log( brewData );
     } else {
+        time = brewData.slice(",")[0]
+        weight = brewData.slice(",")[1]
+
         chart.appendData([{
-            data: [{ brewData }]
+            data: [ [time, weight] ]
         }])
     }
 
