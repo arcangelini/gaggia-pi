@@ -27,7 +27,6 @@ app.get( '/', ( request, response ) => {
 app.use( '/assets', express.static( '/home/pi/gaggia/public/assets' ) );
 app.use( '/assets', express.static( '/home/pi/gaggia/node_modules/socket.io-client/dist' ) );
 
-
 const server = app.listen( 9000, () => {
     console.log( 'Express server started!' );
 });

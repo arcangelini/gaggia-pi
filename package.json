@@ -1,19 +1,16 @@
 {
   "name": "gaggia",
   "version": "1.0.0",
-  "description": "brew control and statistics",
+  "description": "Automation for Gaggia Classic PRO with PI",
   "main": "server.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "author": "",
-  "license": "ISC",
+  "repository": "https://github.com/arcangelini/gaggia-pi.git",
+  "author": "arcangelini <tony@arcangelini.com>",
+  "license": "MIT",
   "dependencies": {
     "apexcharts": "^3.25.0",
-    "cors": "^2.8.5",
     "express": "^4.17.1",
     "johnny-five": "^2.0.0",
-    "path": "^0.12.7",
+    "raspi": "^6.0.1",
     "raspi-io": "^11.0.0",
     "socket.io": "^3.1.1",
     "socket.io-client": "^3.1.1"

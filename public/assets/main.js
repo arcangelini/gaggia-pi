@@ -5,8 +5,6 @@
 let button_brew = document.getElementById( 'brew' )
 let isConnectionActive = false
 let connection = io( 'http://gaggia.local:9000' )
-import ApexCharts from 'apexcharts'
-
 
 connection.on( 'connect', ( server ) => {
     isConnectionActive = true;
