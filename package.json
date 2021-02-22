@@ -1,16 +1,23 @@
 {
   "name": "gaggia",
   "version": "1.0.0",
-  "description": "Automation for Gaggia Classic PRO with PI",
-  "main": "server.js",
-  "repository": "https://github.com/arcangelini/gaggia-pi.git",
-  "author": "arcangelini <tony@arcangelini.com>",
-  "license": "MIT",
-  "dependencies": {
-    "raspi": "^6.0.1"
+  "description": "Connecting Gaggia Classic PRO to a Raspberry Pi",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "devDependencies": {
-    "apexcharts": "^3.25.0",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/arcangelini/gaggia-pi.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/arcangelini/gaggia-pi/issues"
+  },
+  "homepage": "https://github.com/arcangelini/gaggia-pi#readme",
+  "dependencies": {
     "express": "^4.17.1",
     "johnny-five": "^2.0.0",
     "raspi-io": "^11.0.0",
