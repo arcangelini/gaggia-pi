@@ -6,10 +6,7 @@ let buttonBrew = document.getElementById( 'brew' )
 let chartLocation = document.querySelector( '#chart' )
 let connection = io( 'http://gaggia.local:9000' )
 let chart = new ApexCharts( chartLocation, {
-        series: [{
-            name: 'Brew',
-            data: [],
-        }],
+        series: [],
         noData: {
             text: "Brewing..."
         },
@@ -24,7 +21,7 @@ let chart = new ApexCharts( chartLocation, {
             }
         },
         xaxis: {
-            type: 'category'
+            type: 'numeric'
         },
         dataLabels: {
             enabled: false
@@ -41,17 +38,25 @@ buttonBrew.addEventListener( 'click', () => {
     chart.render();
 })
 
+chartData = []
 connection.on( 'brewing', ( brewData ) => {
 
     if ( brewData.startsWith( "Filling" ) ) {
         console.log( brewData );
     } else {
-        //time = brewData.slice(" , ")[0]
-        //weight = brewData.slice(" , ")[1]
-        console.log( brewData )
+        time = brewData.slice("|")[0]
+        weight = brewData.slice("|")[1]
+        data = {
+            x: time,
+            y: weight
+        }
+
+        chartData.push(data)
+
+        console.log( chartData )
 
         chart.appendData([{
-            data: [ brewData ]
+            data: chartData
         }])
     }
 })
