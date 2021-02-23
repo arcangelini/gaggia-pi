@@ -6,11 +6,11 @@ let buttonBrew = document.getElementById( 'brew' )
 let chartLocation = document.querySelector( '#chart' )
 let connection = io( 'http://gaggia.local:9000' )
 let chart = new ApexCharts( chartLocation, {
-        series: [{
-            data: data.slice()
-            }],
+        series: [],
+        noData: {
+            text: "Brewing..."
+        },
         chart: {
-            id: 'realtime',
             height: 350,
             type: 'line',
             animations: {
@@ -34,29 +34,14 @@ let chart = new ApexCharts( chartLocation, {
             curve: 'smooth'
         },
         title: {
-            text: 'Dynamic Updating Chart',
-            align: 'left'
-        },
-        markers: {
-            size: 0
-        },
-        xaxis: {
-            type: 'datetime',
-            range: XAXISRANGE,
-        },
-        yaxis: {
-            max: 100
-        },
-        legend: {
-            show: false
-        },
+            text: 'Brew Weight',
+        }
     } );
 
 buttonBrew.addEventListener( 'click', () => {
     let brewTime = document.getElementById( 'amount' ).value;
     connection.emit( 'brew_start', brewTime );
 
-    chart.destroy();
     chart.render();
 })
 
@@ -68,8 +53,8 @@ connection.on( 'brewing', ( brewData ) => {
         time = brewData.slice(",")[0]
         weight = brewData.slice(",")[1]
 
-        chart.appendData([{
-            data: [ [time, weight] ]
+        chart.updateSeries([{
+            data: [ {"x": time, "y": weight} ]
         }])
     }
 
