@@ -34,10 +34,10 @@ while current_weight < target_weight:
         current_weight = hxA.get_weight( 3 ) #+ hxB.get_weight( 5 )
         if current_weight < 0.009:
             current_weight = 0.000
-            
-        time = '{0:.2f}'.format( toc - tic )
+
+        current_time = '{0:.2f}'.format( toc - tic )
         weight = '{0:.2f}'.format( current_weight )
-        print( '{"x":', time, ',"y":', weight, '}'  )
+        print( '{"x":', current_time, ',"y":', weight, '}'  )
 
         sys.stdout.flush()
 
