@@ -1,6 +1,7 @@
 #! /usr/bin/python3
 
 import time
+import json
 import sys
 sys.path.insert(0, '/home/pi/gaggia/hx711py/')
 
@@ -35,9 +36,13 @@ while current_weight < target_weight:
         if current_weight < 0.009:
             current_weight = 0.000
 
-        current_time = '{0:.2f}'.format( toc - tic )
-        weight = '{0:.2f}'.format( current_weight )
-        print( '{"x":', current_time, ',"y":', weight, '}'  )
+        arr = {
+            "x": float( '{0:.2f}'.format( toc - tic ) ),
+            "y": float( '{0:.2f}'.format( current_weight ) )
+        }
+        
+        data = json.dumps( arr )
+        print( data )
 
         sys.stdout.flush()
 
