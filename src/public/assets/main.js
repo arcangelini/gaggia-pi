@@ -40,11 +40,16 @@ let chart = new ApexCharts( chartLocation, {
         }
     } );
 
+chart.render();
+
 buttonBrew.addEventListener( 'click', () => {
     let brewTime = document.getElementById( 'amount' ).value;
     connection.emit( 'brew_start', brewTime );
 
-    chart.render();
+    chart.updateSeries([{
+        name: 'Brew',
+        data: []
+    }])
 })
 
 chartData = []
@@ -72,6 +77,7 @@ connection.on( 'brewing', ( brewData ) => {
             console.log( chartData )
 
             chart.updateSeries([{
+                name: 'Brew',
                 data: chartData
             }])
 
