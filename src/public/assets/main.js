@@ -44,8 +44,8 @@ connection.on( 'brewing', ( brewData ) => {
     if ( brewData.startsWith( "Filling" ) ) {
         console.log( brewData );
     } else {
-        time = brewData.slice("|")[0]
-        weight = brewData.slice("|")[1]
+        time = brewData.split("|")[0]
+        weight = brewData.slit("|")[1]
         data = {
             x: time,
             y: weight
