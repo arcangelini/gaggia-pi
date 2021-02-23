@@ -5,7 +5,7 @@ import sys
 sys.path.insert(0, '/home/pi/gaggia/hx711py/')
 
 import RPi.GPIO as GPIO
-    from hx711 import HX711
+from hx711 import HX711
 GPIO.setwarnings( False )
 
 def cleanAndExit():
@@ -30,16 +30,16 @@ print( "Filling to: " + str( target_weight ) )
 # Infinite loop till full
 while current_weight < target_weight:
     try:
-        current_weight = hxA.get_weight( 7 ) #+ hxB.get_weight( 1 )
+        toc = time.perf_counter()
+        current_weight = hxA.get_weight( 3 ) #+ hxB.get_weight( 5 )
         if current_weight < 0.009:
             current_weight = 0.000
 
-        toc = time.perf_counter()
         print( '{0:.2f}'.format( toc - tic ), ',', '{0:.2f}'.format( current_weight ) )
-
-        hxA.reset()
 
         sys.stdout.flush()
 
     except (KeyboardInterrupt, SystemExit):
         cleanAndExit()
+
+print( "Brew complete: ", '{0:.2f}'.format( hxA.get_weight( 5 ) ) )

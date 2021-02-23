@@ -38,7 +38,7 @@ const io = socket( server, {
 
 board.on( 'ready', () => {
     io.on( 'connection', ( client ) => {
-        console.log( 'SOCKET: ', 'A client connected', client.id );
+        console.log( 'Connected to ', client.id );
 
         client.on( 'brew_start', ( setWeight ) => {
 	    console.log( "Brew initiated" )
