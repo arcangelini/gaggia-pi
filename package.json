@@ -18,6 +18,7 @@
   },
   "homepage": "https://github.com/arcangelini/gaggia-pi#readme",
   "dependencies": {
+    "apexcharts": "^3.25.0",
     "express": "^4.17.1",
     "johnny-five": "^2.0.0",
     "raspi-io": "^11.0.0",
