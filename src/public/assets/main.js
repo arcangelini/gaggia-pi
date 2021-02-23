@@ -11,6 +11,15 @@ let chart = new ApexCharts( chartLocation, {
             text: "Brewing..."
         },
         chart: {
+            animations: {
+                enabled: true,
+                easing: 'linear',
+                speed: 500,
+                dynamicAnimation: {
+                    enabled: true,
+                    speed: 350
+                }
+            },
             height: 350,
             type: 'line',
             toolbar: {
@@ -44,8 +53,8 @@ connection.on( 'brewing', ( brewData ) => {
     if ( brewData.startsWith( "Filling" ) ) {
         console.log( brewData );
     } else {
-        time = brewData.split("|")[0]
-        weight = brewData.slit("|")[1]
+        time = parseFloat( brewData.split("|")[0] )
+        weight = parseFloat( brewData.split("|")[1] )
         data = {
             x: time,
             y: weight
@@ -55,7 +64,7 @@ connection.on( 'brewing', ( brewData ) => {
 
         console.log( chartData )
 
-        chart.appendData([{
+        chart.updateSeries([{
             data: chartData
         }])
     }
