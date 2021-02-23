@@ -27,9 +27,10 @@ tic = time.perf_counter()
 
 print( "Filling to: " + str( target_weight ) )
 
+# Infinite loop till full
 while current_weight < target_weight:
     try:
-        current_weight = hxA.get_weight( 1 ) #+ hxB.get_weight( 1 )
+        current_weight = hxA.get_weight( 7 ) #+ hxB.get_weight( 1 )
         if current_weight < 0.009:
             current_weight = 0.000
 
