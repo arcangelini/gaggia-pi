@@ -32,6 +32,10 @@ let chart = new ApexCharts( chartLocation, {
         xaxis: {
             type: 'numeric'
         },
+        stroke: {
+            show: true,
+            curve: 'smooth',
+        },
         dataLabels: {
             enabled: false
         },
@@ -62,6 +66,8 @@ connection.on( 'brewing', ( brewData ) => {
 
         case "B":
             console.log( brewData );
+            delete chartData
+            delete brewData
             break;
 
         default:
