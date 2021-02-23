@@ -50,22 +50,30 @@ buttonBrew.addEventListener( 'click', () => {
 chartData = []
 connection.on( 'brewing', ( brewData ) => {
 
-    if ( brewData.startsWith( "Filling" ) ) {
-        console.log( brewData );
-    } else {
-        time = parseFloat( brewData.split("|")[0] )
-        weight = parseFloat( brewData.split("|")[1] )
-        data = {
-            x: time,
-            y: weight
-        }
+    switch ( brewData.charAt(0) ) {
+        case "F":
+            console.log( brewData );
+            break;
 
-        chartData.push(data)
+        case "B":
+            console.log( brewData );
+            break;
 
-        console.log( chartData )
+        default:
+            time = parseFloat( brewData.split("|")[0] )
+            weight = parseFloat( brewData.split("|")[1] )
+            data = {
+                x: time,
+                y: weight
+            }
 
-        chart.updateSeries([{
-            data: chartData
-        }])
+            chartData.push(data)
+
+            console.log( chartData )
+
+            chart.updateSeries([{
+                data: chartData
+            }])
+
     }
 })
