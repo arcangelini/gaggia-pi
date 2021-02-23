@@ -35,9 +35,10 @@ while current_weight < target_weight:
         if current_weight < 0.009:
             current_weight = 0.000
 
-        data = float( '{0:.2f}'.format( toc - tic ) ), '|', float( '{0:.2f}'.format( current_weight ) )
+        current_time = float( '{0:.2f}'.format( toc - tic ) )
+        weight = float( '{0:.2f}'.format( current_weight ) )
         
-        print( data )
+        print( "{}|{}".format(current_time, weight) )
 
         sys.stdout.flush()
 
