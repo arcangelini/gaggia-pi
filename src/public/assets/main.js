@@ -49,6 +49,8 @@ chart.render();
 buttonBrew.addEventListener( 'click', () => {
     let brewTime = document.getElementById( 'amount' ).value;
     connection.emit( 'brew_start', brewTime );
+    
+    chartData = []
 
     chart.updateSeries([{
         name: 'Brew',
@@ -56,9 +58,8 @@ buttonBrew.addEventListener( 'click', () => {
     }])
 })
 
-chartData = []
 connection.on( 'brewing', ( brewData ) => {
-
+    
     switch ( brewData.charAt(0) ) {
         case "F":
             console.log( brewData );
