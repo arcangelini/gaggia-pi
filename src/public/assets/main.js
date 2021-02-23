@@ -2,41 +2,61 @@
  * Gaggia response
  */
 
-let button_brew = document.getElementById( 'brew' )
-let isConnectionActive = false
+let buttonBrew = document.getElementById( 'brew' )
+let chartLocation = document.querySelector( '#chart' )
 let connection = io( 'http://gaggia.local:9000' )
+let chart = new ApexCharts( chartLocation, {
+        series: [{
+            data: data.slice()
+            }],
+        chart: {
+            id: 'realtime',
+            height: 350,
+            type: 'line',
+            animations: {
+                enabled: true,
+                easing: 'linear',
+                dynamicAnimation: {
+                    speed: 1000
+                }
+            },
+            toolbar: {
+                show: false
+            },
+            zoom: {
+                enabled: false
+            }
+        },
+        dataLabels: {
+            enabled: false
+        },
+        stroke: {
+            curve: 'smooth'
+        },
+        title: {
+            text: 'Dynamic Updating Chart',
+            align: 'left'
+        },
+        markers: {
+            size: 0
+        },
+        xaxis: {
+            type: 'datetime',
+            range: XAXISRANGE,
+        },
+        yaxis: {
+            max: 100
+        },
+        legend: {
+            show: false
+        },
+    } );
 
-const options = {
-    chart: {
-        type: 'line'
-    },
-    series: [{
-        name: 'Brew',
-        data: []
-    }],
-    animations: {
-        enabled: true,
-        easing: 'linear',
-        dynamicAnimation: {
-          speed: 1000
-        }
-    }
-}
-
-let chart = new ApexCharts( document.querySelector( '#chart' ), options );
-
-connection.on( 'connect', () => {
-    isConnectionActive = true;
-});
-
-connection.on( 'disconnect', () => {
-    isConnectionActive = false;
-});
-
-button_brew.addEventListener( 'click', () => {
+buttonBrew.addEventListener( 'click', () => {
     let brewTime = document.getElementById( 'amount' ).value;
     connection.emit( 'brew_start', brewTime );
 
+    chart.destroy();
     chart.render();
 })
 
