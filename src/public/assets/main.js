@@ -34,6 +34,9 @@ connection.on( 'brewing', ( brewData ) => {
             delete brewData
             break;
 
+        case null:
+            break;
+
         default:
             time = parseFloat( brewData.split("|")[0] )
             weight = parseFloat( brewData.split("|")[1] )
