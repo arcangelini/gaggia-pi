@@ -1,9 +1,7 @@
 /**
  * Chart functions
  */
-export const chart = new ApexCharts(
-    document.querySelector('#chart'), 
-    {
+const chart = new ApexCharts( document.querySelector( '#chart' ), {
         series: [],
         noData: {
             text: "Brewing..."
