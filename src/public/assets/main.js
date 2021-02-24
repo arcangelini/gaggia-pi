@@ -3,6 +3,7 @@
  */
 let buttonBrew = document.getElementById( 'brew' )
 let connection = io( 'http://gaggia.local:9000' )
+chart.render();
 
 buttonBrew.addEventListener( 'click', () => {
     let brewTime = document.getElementById( 'amount' ).value;

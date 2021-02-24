@@ -7,7 +7,7 @@ class Scale {
     constructor( client, targetWeight ) {
         this.client = client;
         this.targetWeight = targetWeight;
-        this.read = spawn( 'python3 -u', [ __dirname + '/scale.py', this.targetWeight ], {
+        this.read = spawn( 'python3', [ '-u', __dirname + '/scale.py', this.targetWeight ], {
             detached: true,
             } 
         );
