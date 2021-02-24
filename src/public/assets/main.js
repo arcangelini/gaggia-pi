@@ -42,9 +42,9 @@ connection.on( 'brewing', ( brewData ) => {
                 y: weight
             }
 
-            chartData.push(data)
+            chartData.push( data )
 
-            console.log( time + '||' + weight )
+            console.log( brewData + ' -- ' + time + '||' + weight )
 
             chart.updateSeries([{
                 name: 'Brew',
