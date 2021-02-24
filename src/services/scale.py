@@ -23,9 +23,9 @@ hxA.tare()
 
 current_weight = 0
 target_weight = int( sys.argv[1] )
-tic = time.perf_counter()
 
 print( "Filling to: " + str( target_weight ) )
+tic = time.perf_counter()
 
 # Infinite loop till full
 while current_weight < target_weight:
@@ -39,6 +39,7 @@ while current_weight < target_weight:
         weight = str( '{0:.2f}'.format( current_weight ) )
         
         print( current_time + '|' + weight )
+        time.sleep( 0.1 )
 
     except (KeyboardInterrupt, SystemExit):
         cleanAndExit()
