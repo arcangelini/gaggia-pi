@@ -1,7 +1,7 @@
 /**
  * Chart functions
  */
-const chart = new ApexCharts(
+export const chart = new ApexCharts(
     document.querySelector('#chart'), 
     {
         series: [],
