@@ -31,7 +31,7 @@ print( "Filling to: " + str( target_weight ) )
 while current_weight < target_weight:
     try:
         toc = time.perf_counter()
-        current_weight = hxA.get_weight( 3 ) #+ hxB.get_weight( 5 )
+        current_weight = hxA.get_weight( 1 ) #+ hxB.get_weight( 5 )
         if current_weight < 0.009:
             current_weight = 0.000
 
@@ -39,8 +39,6 @@ while current_weight < target_weight:
         weight = str( '{0:.2f}'.format( current_weight ) )
         
         print( current_time + '|' + weight )
-
-        sys.stdout.flush()
 
     except (KeyboardInterrupt, SystemExit):
         cleanAndExit()
