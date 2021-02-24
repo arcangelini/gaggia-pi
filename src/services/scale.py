@@ -40,7 +40,7 @@ while current_weight < target_weight:
         current_time = str( '{0:.2f}'.format( toc - tic ) )
         weight = str( '{0:.2f}'.format( current_weight ) )
         
-        print( current_time + '|' + weight )
+        sys.stdout.write( current_time + '|' + weight )
         time.sleep( 0.1 )
 
     except (KeyboardInterrupt, SystemExit):

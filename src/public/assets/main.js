@@ -34,7 +34,7 @@ connection.on( 'brewing', ( brewData ) => {
             delete brewData
             break;
 
-        case null:
+        case "":
             break;
 
         default:
