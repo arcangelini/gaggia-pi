@@ -25,13 +25,15 @@ current_weight = 0
 target_weight = int( sys.argv[1] )
 
 print( "Filling to: " + str( target_weight ) )
+time.sleep( 3 )
+
 tic = time.perf_counter()
 
 # Infinite loop till full
 while current_weight < target_weight:
     try:
         toc = time.perf_counter()
-        current_weight = hxA.get_weight( 1 ) #+ hxB.get_weight( 5 )
+        current_weight = hxA.get_weight( 3 ) #+ hxB.get_weight( 5 )
         if current_weight < 0.009:
             current_weight = 0.000
 
