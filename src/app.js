@@ -41,10 +41,14 @@ board.on( 'ready', () => {
         console.log( 'Connected to ', client.id );
 
         client.on( 'brew_start', ( setWeight ) => {
-	    console.log( "Brew initiated" )
+            console.log( "Brew starting" )
             const scale = new Scale( client, setWeight )
 
             scale.brew()
+        })
+
+        client.on( 'stop', () => {
+
         })
     });
 });

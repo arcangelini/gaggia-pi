@@ -13,19 +13,22 @@ class Scale {
         );
     }
 
-    brew() {        
-        this.read.stdout.setEncoding( 'utf-8' )
+    brew() {  
+        this.read.stderr.on( 'error', data => {
+            this.client.emit( 'error', data )
+        } )
+
         this.read.stdout.on( 'data', data => {
             this.client.emit( 'brewing', data )
-            if( data.startsWith( "Brew complete" ) ){
-                console.log( "Brew ending" );
+            if( data.startsWith( 'Brew complete' ) ){
+                console.log( 'Brew finished' );
             }
         } )
         
-        this.read.stderr.setEncoding( 'utf-8' )
-        this.read.stderr.on( 'data', data => {
-            this.client.emit( 'brewing', data )
-        } )
+    }
+
+    stop() {
+
     }
 }
 
