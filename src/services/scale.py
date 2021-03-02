@@ -23,27 +23,31 @@ hxA.tare()
 
 current_weight = 0
 target_weight = int( sys.argv[1] )
+adjusted = 2
 
-print( "Filling to: " + str( target_weight ) )
+sys.stdout.write( "Filling to: " + str( target_weight ) )
 time.sleep( 3 )
 
 tic = time.perf_counter()
 
 # Infinite loop till full
-while current_weight < target_weight:
+while current_weight < target_weight - adjusted:
     try:
         toc = time.perf_counter()
         current_weight = hxA.get_weight( 3 ) #+ hxB.get_weight( 5 )
-        if current_weight < 0.009:
-            current_weight = 0.000
+        
+        if current_weight < 0.02:
+            current_weight = 0.00
+        elif current_weight > 60:
+            current_weight = hxA.get_weight( 3 ) #+ hxB.get_weight( 5 )
 
         current_time = str( '{0:.2f}'.format( toc - tic ) )
         weight = str( '{0:.2f}'.format( current_weight ) )
         
         sys.stdout.write( current_time + '|' + weight )
-        time.sleep( 0.1 )
+
 
     except (KeyboardInterrupt, SystemExit):
         cleanAndExit()
 
-print( "Brew complete: ", '{0:.2f}'.format( hxA.get_weight( 5 ) ) )
+sys.stdout.write( "Brew complete: " + weight )

@@ -24,8 +24,8 @@ app.get( '/', ( request, response ) => {
 });
 
 app.use( '/assets', express.static( __dirname + '/public/assets' ) );
-app.use( '/assets', express.static( __dirname + '/../node_modules/socket.io-client/dist' ) );
-app.use( '/assets', express.static( __dirname + '/../node_modules/apexcharts/dist' ) );
+app.use( '/assets/js', express.static( __dirname + '/../node_modules/socket.io-client/dist' ) );
+app.use( '/assets/js', express.static( __dirname + '/../node_modules/apexcharts/dist' ) );
 
 const server = app.listen( 9000, () => {
     console.log( 'Express server started!' );

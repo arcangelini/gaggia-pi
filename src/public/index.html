@@ -2,6 +2,7 @@
 <html>
 
 <head>
+    <link rel="icon" href="assets/img/portafilter.svg">
     <link rel="stylesheet" href="assets/style.css" />
 </head>
 
@@ -14,16 +15,16 @@
     <input type="number" id="amount" name="amount" min="14" max="44">
     <br>
 
-    <div id="brew" class="brew-button">
-        Start Brew!
-    </div>
+    <button id="brew" class="start" onclick="startBrew()">Start</button>
+    <button id="brew" class="stop">Stop</button>
+
     <br>
 
     <div id="chart"></div>
-    <script src="assets/apexcharts.min.js"></script>
-    <script src="assets/charts.js"></script>
-    <script src="assets/socket.io.js"></script>
-    <script src="assets/main.js"></script>
+    <script src="assets/js/apexcharts.min.js"></script>
+    <script src="assets/js/charts.js"></script>
+    <script src="assets/js/socket.io.js"></script>
+    <script src="assets/js/main.js"></script>
 </body>
 
 </html>

@@ -1,11 +1,10 @@
 /**
  * Gaggia response
  */
-let buttonBrew = document.getElementById( 'brew' )
 let connection = io( 'http://gaggia.local:9000' )
 chart.render();
 
-buttonBrew.addEventListener( 'click', () => {
+function startBrew(){
     let brewTime = document.getElementById( 'amount' ).value;
     connection.emit( 'brew_start', brewTime );
     
@@ -15,7 +14,7 @@ buttonBrew.addEventListener( 'click', () => {
         name: 'Brew',
         data: []
     }])
-})
+}
 
 connection.on( 'error', ( error ) => {
     console.log( error )
@@ -24,17 +23,14 @@ connection.on( 'error', ( error ) => {
 connection.on( 'brewing', ( brewData ) => {
     
     switch ( brewData.charAt(0) ) {
-        case "F":
+        case 'F':
             console.log( brewData );
             break;
 
-        case "B":
+        case 'B':
             console.log( brewData );
             delete chartData
             delete brewData
-            break;
-
-        case "":
             break;
 
         default:
