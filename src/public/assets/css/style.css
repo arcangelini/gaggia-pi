@@ -8,16 +8,6 @@ body {
   text-align: center;
 }
 
-#brew {
-  width: 100px;
-  text-align: center;
-  margin: auto;
-  background-color: blanchedalmond;
-  padding: 10px;
-  border: 2px #000 solid;
-  border-radius: 5px;
-}
-
 input#amount {
   font-size: 24px;
   display: block;

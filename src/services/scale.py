@@ -13,11 +13,11 @@ def cleanAndExit():
     sys.exit()
 
 # Setup scale 1
-hxA = HX711( 6, 5 )
-hxA.set_reading_format( "MSB", "MSB" )
-hxA.set_reference_unit( 6943 )
-hxA.reset()
-hxA.tare()
+hxYellow = HX711( 27, 17 )
+hxYellow.set_reading_format( "MSB", "MSB" )
+hxYellow.set_reference_unit( 6943 )
+hxYellow.reset()
+hxYellow.tare()
 
 # Setup scale 2
 
@@ -34,17 +34,18 @@ tic = time.perf_counter()
 while current_weight < target_weight - adjusted:
     try:
         toc = time.perf_counter()
-        current_weight = hxA.get_weight( 3 ) #+ hxB.get_weight( 5 )
+        current_weight = hxYellow.get_weight( 3 ) #+ hxRed.get_weight( 5 )
         
         if current_weight < 0.02:
             current_weight = 0.00
         elif current_weight > 60:
-            current_weight = hxA.get_weight( 3 ) #+ hxB.get_weight( 5 )
+            current_weight = hxYellow.get_weight( 3 ) #+ hxRed.get_weight( 5 )
 
         current_time = str( '{0:.2f}'.format( toc - tic ) )
         weight = str( '{0:.2f}'.format( current_weight ) )
         
         sys.stdout.write( current_time + '|' + weight )
+        time.sleep(1)
 
 
     except (KeyboardInterrupt, SystemExit):
